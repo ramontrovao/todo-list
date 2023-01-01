@@ -22,6 +22,7 @@
     width: 38rem;
     background-color: $gray-400;
     border: 1px solid $gray-700;
+    color: $gray-100;
     border-radius: 8px;
     padding: 1rem;
 }
@@ -33,6 +34,34 @@
     background-color: $pink-dark;
     color: $gray-100;
     padding: 1rem;
+    cursor: pointer;
+
+    &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+}
+
+.dontHaveTasksArea {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    strong {
+        color: $gray-200;
+    }
+
+    span {
+        color: $gray-300;
+    }
+}
+
+#clipboardIcon {
+    margin-bottom: 1rem;
+    width: 5rem;
+    height: 5rem;
+    color: $gray-400;
 }
 
 .tasksArea {

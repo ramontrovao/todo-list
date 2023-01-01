@@ -2,16 +2,18 @@
 
 .task {
     display: flex;
+    justify-content: space-between;
     padding: 1rem;
     border-radius: 8px;
     gap: 1.5rem;
+    width: 100%;
 
     background-color: $gray-400;
 }
 
 .taskContent {
     font-size: 1rem;
-    line-height: 1.2;
+    word-break: break-all;
 
     color: $gray-100;
 }
