@@ -1,0 +1,9 @@
+@import "./variables.scss";
+
+.topBackground {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $gray-700;
+    height: 12.5rem;
+}

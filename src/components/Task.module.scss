@@ -1,0 +1,37 @@
+@import "../variables.scss";
+
+.task {
+    display: flex;
+    padding: 1rem;
+    border-radius: 8px;
+    gap: 1.5rem;
+
+    background-color: $gray-400;
+}
+
+.taskContent {
+    font-size: 1rem;
+    line-height: 1.2;
+
+    color: $gray-100;
+}
+
+.taskCheck:checked {
+    background-color: $pink-dark;
+}
+
+.taskButton {
+    align-self: flex-start;
+    border: 0;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 0;
+
+    background-color: transparent;
+    transition: color 0.3s;
+    color: $gray-300;
+
+    &:hover {
+        color: $pink-dark;
+    }
+}

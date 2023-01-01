@@ -1,0 +1,17 @@
+@import "./variables.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $gray-600;
+}
+
+@media (max-width: 428px) {
+    html {
+        font-size: 85%;
+    }
+}
