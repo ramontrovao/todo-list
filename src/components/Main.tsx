@@ -41,11 +41,15 @@ export const Main = () => {
     }
   };
 
-  const deleteTask = (id: number, content: string) => {
-    const allTasksUpdated = allTasks.filter((task) => task.id !== id);
+  const deleteTask = (taskToDelete: AllTasks) => {
+    const allTasksUpdated = allTasks.filter(
+      (task) => task.id !== taskToDelete.id
+    );
     setNewTask(allTasksUpdated);
 
-    setNewTaskCompleted((prev) => prev - 1);
+    if (taskToDelete.isCompleted) {
+      setNewTaskCompleted((prev) => prev - 1);
+    }
   };
 
   return (
@@ -91,7 +95,7 @@ export const Main = () => {
                   handleCheckTask(task, e.target.checked);
                 }}
                 onDeleteTask={() => {
-                  deleteTask(task.id, task.content);
+                  deleteTask(task);
                 }}
                 id={task.id}
                 key={task.id}
