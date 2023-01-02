@@ -12,9 +12,8 @@ interface AllTasks {
 export const Main = () => {
   const [createdTaskText, setCreatedTaskText] = useState("");
   const [allTasks, setNewTask] = useState(Array<AllTasks>);
-  const [allTasksCompleted, setNewTaskCompleted] = useState(Array<string>);
+  const [allTasksCompleted, setNewTaskCompleted] = useState(0);
   const [idCount, setIdCount] = useState(0);
-  const [checkboxIsChecked, setCheckState] = useState({});
 
   const handleCreateTaskInputChange = (event: any) => {
     setCreatedTaskText(event.target.value);
@@ -34,11 +33,10 @@ export const Main = () => {
 
   const handleCheckTask = (task: AllTasks, checkedState: boolean) => {
     if (checkedState === true) {
-      setNewTaskCompleted((prev) => [...prev, task.content]);
+      setNewTaskCompleted((prev) => prev + 1);
       task.isCompleted = true;
     } else {
-      const taskToRemove = allTasksCompleted.indexOf(task.content);
-      setNewTaskCompleted((prev) => prev.slice(0, taskToRemove));
+      setNewTaskCompleted((prev) => prev - 1);
       task.isCompleted = false;
     }
   };
@@ -47,8 +45,7 @@ export const Main = () => {
     const allTasksUpdated = allTasks.filter((task) => task.id !== id);
     setNewTask(allTasksUpdated);
 
-    const taskToRemove = allTasksCompleted.indexOf(content);
-    setNewTaskCompleted((prev) => prev.slice(0, taskToRemove));
+    setNewTaskCompleted((prev) => prev - 1);
   };
 
   return (
@@ -80,7 +77,7 @@ export const Main = () => {
           <strong id={styles.tasksFinished}>
             Concluídas{" "}
             <span className={styles.numberTasks}>
-              {allTasksCompleted.length} de {allTasks.length}
+              {allTasksCompleted} de {allTasks.length}
             </span>
           </strong>
         </div>
@@ -92,7 +89,6 @@ export const Main = () => {
                 content={task.content}
                 onChangeCheckBtn={(e: any) => {
                   handleCheckTask(task, e.target.checked);
-                  setCheckState(e.target.checked);
                 }}
                 onDeleteTask={() => {
                   deleteTask(task.id, task.content);
