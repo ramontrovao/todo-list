@@ -1,4 +1,5 @@
 import { Main } from "./components/Main";
+import { Footer } from "./components/Footer";
 
 import styles from "./App.module.scss";
 
@@ -10,6 +11,8 @@ function App() {
       </header>
 
       <Main />
+
+      <Footer />
     </>
   );
 }

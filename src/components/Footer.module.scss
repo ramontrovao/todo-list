@@ -1,0 +1,14 @@
+@import '../variables.scss';
+
+.footer {
+    padding: 1rem;
+}
+
+.footer p {
+    color: $gray-100;
+    text-align: center;
+}
+
+#heart {
+    color: $pink-dark;
+}
