@@ -14,6 +14,7 @@ export const Main = () => {
   const [allTasks, setNewTask] = useState(Array<AllTasks>);
   const [allTasksCompleted, setNewTaskCompleted] = useState(Array<string>);
   const [idCount, setIdCount] = useState(0);
+  const [checkboxIsChecked, setCheckState] = useState({});
 
   const handleCreateTaskInputChange = (event: any) => {
     setCreatedTaskText(event.target.value);
@@ -31,15 +32,14 @@ export const Main = () => {
     setCreatedTaskText("");
   };
 
-  const handleCheckTask = (
-    { content, isCompleted, id }: AllTasks,
-    checkedState: boolean
-  ) => {
+  const handleCheckTask = (task: AllTasks, checkedState: boolean) => {
     if (checkedState === true) {
-      setNewTaskCompleted((prev) => [...prev, content]);
+      setNewTaskCompleted((prev) => [...prev, task.content]);
+      task.isCompleted = true;
     } else {
-      const taskToRemove = allTasksCompleted.indexOf(content);
+      const taskToRemove = allTasksCompleted.indexOf(task.content);
       setNewTaskCompleted((prev) => prev.slice(0, taskToRemove));
+      task.isCompleted = false;
     }
   };
 
@@ -92,11 +92,14 @@ export const Main = () => {
                 content={task.content}
                 onChangeCheckBtn={(e: any) => {
                   handleCheckTask(task, e.target.checked);
+                  setCheckState(e.target.checked);
                 }}
                 onDeleteTask={() => {
                   deleteTask(task.id, task.content);
                 }}
+                id={task.id}
                 key={task.id}
+                isChecked={task.isCompleted}
               />
             ))
           ) : (

@@ -16,10 +16,10 @@
     word-break: break-all;
 
     color: $gray-100;
-}
 
-.taskCheck:checked {
-    background-color: $pink-dark;
+    &::selection {
+        background-color: transparent;
+    }
 }
 
 .taskButton {
