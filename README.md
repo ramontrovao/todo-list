@@ -1,8 +1,6 @@
-# Todo-list
+# Modern todo-list
 
-![preview](./public/assets/projectpreview.png)
-
-> Modern Todo-list 
+![preview](./public/assets/preview.png)
 
 I created this todolist project to exercise my skills about the main concepts of React, such as State and imutability. This project is made to use for check your day tasks.
 
